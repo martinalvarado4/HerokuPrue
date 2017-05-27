@@ -1,0 +1,27 @@
+<%= form_tag(search_serials_path, method: "get") do %>
+  <p><%= "Filtre por atributos (dejar - si no considerar)" %></p>
+  <p>
+  <%= label_tag "Elija genero" %>
+  <%= select_tag "genero_serial" , options_for_select(['-',"Accion", "Suspenso", "Drama", "Anime", "Romance", "Terror"])%>
+  </p>
+  <p>
+  <%= label_tag "Elija año" %>
+  <%= select_tag "ano_serial", options_for_select(['-']+(1990..2017).to_a) %>
+  </p>
+  <p>
+  <%= label_tag "Elija rating minimo" %>
+  <%= select_tag "rating_serial", options_for_select(['-']+(0..5).to_a) %>
+  </p>
+  <p>
+  <%= label_tag "Ingrese palabra clave" %>
+  <%= text_field_tag :palabra_clave,  '-' %>
+  </p>
+  <%= submit_tag "Filter" %>
+<% end %>
+<% @serials.each do |s| %>
+  <li>
+  <%= "Titulo :"+ s.titulo %>
+  <%= "# Año :"+ s.ano.to_s %>
+  <%= "# Rating :"+ s.rating.to_s %>
+  </li>
+<% end %>

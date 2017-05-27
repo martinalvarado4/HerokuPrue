@@ -1,0 +1,8 @@
+<% if @chapter.visto.users.include?(current_user) %>
+  <strong><%= "SE MARCO COMO NO VISTO" %></strong>
+  <% @chapter.visto.users.delete(current_user)%>
+<% else %>
+  <strong><%= "SE MARCO COMO VISTO" %></strong>
+  <% @chapter.visto.users.push(current_user)%>
+<% end %>
+<p><%= link_to 'VOLVER A CAPITULO', serial_chapter_path(@serial,@chapter) %></p>

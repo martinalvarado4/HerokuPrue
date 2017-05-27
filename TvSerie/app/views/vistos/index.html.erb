@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vistos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vistos.each do |visto| %>
+      <tr>
+        <td><%= link_to 'Show', serial_chapter_visto_path(@serial,@chapter,visto) %></td>
+        <td><%= link_to 'Edit', edit_seraio_chapter_visto_path(@serial,@chapter,visto) %></td>
+        <td><%= link_to 'Destroy', serial_chapter_visto_path(@serial,@chapter,visto), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Visto', new_serial_chapter_visto_path(@serial,@chapter) %>

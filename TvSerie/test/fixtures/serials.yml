@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genero: MyString
+  ano: 1
+  titulo: MyText
+  descripcion: MyText
+  rating: 1
+
+two:
+  genero: MyString
+  ano: 1
+  titulo: MyText
+  descripcion: MyText
+  rating: 1

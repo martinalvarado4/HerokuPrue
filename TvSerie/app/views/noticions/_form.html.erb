@@ -1,0 +1,37 @@
+<%= form_for(noticion) do |f| %>
+  <% if noticion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(noticion.errors.count, "error") %> prohibited this noticion from being saved:</h2>
+
+      <ul>
+      <% noticion.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_area :titulo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contenido %>
+    <%= f.text_area :contenido %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %>
+    <%= f.select :tipo, ["Estreno", "Nueva Serie", "Avance", "Actores", "Grabacion", "Director"] %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :serial_id %>
+    <%= f.select :serial_id, [["-",nil]] + Serial.all.collect {|serial| [serial.titulo, serial.id] } , :selected =>f.object[1]  %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

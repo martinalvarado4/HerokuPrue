@@ -1,0 +1,22 @@
+<%= form_for([@serial,@reviewse]) do |f| %>
+  <% if reviewse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reviewse.errors.count, "error") %> prohibited this reviewse from being saved:</h2>
+
+      <ul>
+      <% @reviewse.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comentario %>
+    <%= f.text_area :comentario %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

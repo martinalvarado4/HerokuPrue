@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @reviewch.comentario %>
+</p>
+
+<%= link_to 'Edit', edit_serial_chapter_reviewch_path(@serial,@chapter,@reviewch) %> |
+<%= link_to 'Back', serial_chapter_path(@serial,@chapter) %>

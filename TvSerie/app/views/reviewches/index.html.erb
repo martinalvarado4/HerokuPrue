@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reviewches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comentario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviewches.each do |reviewch| %>
+      <tr>
+        <td><%= reviewch.comentario %></td>
+        <td><%= link_to 'Show', serial_chapter_reviewch_path(@serial,@chapter,reviewch) %></td>
+        <td><%= link_to 'Edit', edit_serial_chapter_reviewch_path(@serial,@chapter,reviewch) %></td>
+        <td><%= link_to 'Destroy', serial_chapter_reviewch_path(@serial,@chapter,reviewch), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reviewch', new_serial_chapter_reviewch_path(@serial,@chapter) %>

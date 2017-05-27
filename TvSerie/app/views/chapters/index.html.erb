@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chapters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Largo</th>
+      <th>Numero</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chapters.each do |chapter| %>
+      <tr>
+        <td><%= chapter.largo %></td>
+        <td><%= chapter.numero %></td>
+        <td><%= chapter.descripcion %></td>
+        <td><%= link_to 'Shoow', serial_chapter_path(@serial,chapter) %></td>
+        <td><%= link_to 'Edit', edit_serial_chapter_path(@serial,chapter) %></td>
+        <td><%= link_to 'Destroy', serial_chapter_path(@serial,chapter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chapter', new_serial_chapter_path(@serial) %>

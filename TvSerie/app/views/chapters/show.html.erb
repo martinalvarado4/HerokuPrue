@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Largo:</strong>
+  <%= @chapter.largo %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @chapter.numero %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @chapter.descripcion %>
+</p>
+<p>
+  <strong>Rating:</strong>
+  <%= @chapter.rating %>
+</p>
+<p>
+  <% if @chapter.visto.users.include?(current_user) %>
+    <%= link_to "MARCAR NO VISTO", edit_serial_chapter_visto_path(@serial,@chapter,@chapter.visto) %>
+  <% else %>
+    <%= link_to "MARCAR VISTO", edit_serial_chapter_visto_path(@serial,@chapter,@chapter.visto)%>
+  <% end %>
+</p>
+<p>
+  <strong>Reviews:</strong>
+  <%= link_to 'Nuevo Review', new_serial_chapter_reviewch_path(@serial,@chapter) %>
+</p>
+<p>
+  <% @chapter.reviewches.each do |reviewch| %>
+    <p>
+    <%= "Comentario: "+reviewch.comentario %>
+    <%= "ususario: "+reviewch.user.email %>
+    <%= "rating: "+ reviewch.rating.to_s %>
+    <%= link_to "Destroy", serial_chapter_reviewch_path(@serial,@chapter,reviewch), method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </p>
+  <% end %>
+</p>
+<p>
+
+<%= link_to 'Edit', edit_serial_chapter_path(@serial,@chapter) %> |
+<%= link_to 'Back', serial_path(@serial) %>

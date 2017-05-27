@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @serial.genero %>
+</p>
+
+<p>
+  <strong>Año:</strong>
+  <%= @serial.ano %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @serial.titulo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @serial.descripcion %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @serial.rating %>
+</p>
+<p>
+  <strong>Reviews:</strong>
+  <%= link_to 'Nuevo Review', new_serial_reviewse_path(@serial) %>
+</p>
+<p>
+  <% @serial.reviewses.each do |reviewse| %>
+    <p>
+    <%= "Comentario: "+reviewse.comentario %>
+    <%= "usuario: " + reviewse.user.email %>
+    <%= link_to "Destroy", serial_reviewse_path(@serial,reviewse), method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </p>
+  <% end %>
+</p>
+<p>
+  <strong>Capitulos:</strong>
+  <%= link_to 'Nuevo Capitulo', new_serial_chapter_path(@serial) %>
+</p>
+<p>
+  <% @serial.chapters.each do |chapter| %>
+    <p>
+    <%= link_to "Capitulo " + chapter.numero.to_s, serial_chapter_path(@serial,chapter) %>
+    <%= "descripcion: " + chapter.descripcion %>
+    <%= "rating: "+ chapter.rating.to_s %>
+    <%= link_to "Editar", edit_serial_chapter_path(@serial,chapter) %>
+    <%= link_to "Destroy ", serial_chapter_path(@serial,chapter), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_serial_path(@serial) %> |
+<%= link_to 'Back', serials_path %>

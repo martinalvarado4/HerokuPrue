@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Series</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Genero</th>
+      <th>Año</th>
+      <th>Titulo</th>
+      <th>Descripcion</th>
+      <th>Rating</th>
+      <th>Ingresado por:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @serials.each do |serial| %>
+      <% if current_user == nil %>
+      <tr>
+        <td><%= serial.genero %></td>
+        <td><%= serial.ano %></td>
+        <td><%= serial.titulo %></td>
+        <td><%= serial.descripcion %></td>
+        <td><%= serial.rating %></td>
+        <td><%= serial.user.email %></td>
+        <td><%= link_to 'Show', serial %></td>
+        <td><%= link_to 'Edit', edit_serial_path(serial) %></td>
+        <td><%= link_to 'Destroy', serial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% elsif current_user.parent == nil %>
+      <tr>
+        <td><%= serial.genero %></td>
+        <td><%= serial.ano %></td>
+        <td><%= serial.titulo %></td>
+        <td><%= serial.descripcion %></td>
+        <td><%= serial.rating %></td>
+        <td><%= serial.user.email %></td>
+        <td><%= link_to 'Show', serial %></td>
+        <td><%= link_to 'Edit', edit_serial_path(serial) %></td>
+        <td><%= link_to 'Destroy', serial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr> 
+      <% else %>
+        <% if serial.user == current_user.parent %>
+          <tr>
+            <td><%= serial.genero %></td>
+            <td><%= serial.ano %></td>
+            <td><%= serial.titulo %></td>
+            <td><%= serial.descripcion %></td>
+            <td><%= serial.rating %></td>
+            <td><%= serial.user.email %></td>
+            <td><%= link_to 'Show', serial %></td>
+            <td><%= link_to 'Edit', edit_serial_path(serial) %></td>
+            <td><%= link_to 'Destroy', serial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Serial', new_serial_path %>
